@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IndiaTravel.com | Explore Incredible India</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #f4f6f7;
+      color: #333;
+    }
+
+    /* Navbar */
+    header {
+      background-color: #0d47a1;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 25px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: url('https://media.gettyimages.com/id/1297915012/photo/sunset-in-varanasi.jpg?s=612x612&w=0&k=20&c=2xvjSif5baccHXo_QIHY9QLAjc0sOlqpwkVcL6g3vjs=') center/cover no-repeat;
+      height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      color: white;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-content {
+      position: relative;
+      text-align: center;
+      z-index: 1;
+    }
+
+    .hero-content h1 {
+      font-size: 45px;
+      margin-bottom: 10px;
+    }
+
+    .hero-content p {
+      font-size: 20px;
+      margin-bottom: 25px;
+    }
+
+    .hero-content button {
+      background-color: #ff9800;
+      border: none;
+      color: white;
+      padding: 12px 25px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .hero-content button:hover {
+      background-color: #e68900;
+    }
+
+    /* Search Box */
+    .search-box {
+      background-color: #fff;
+      width: 80%;
+      margin: -40px auto 50px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      padding: 25px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .search-box select, .search-box input {
+      padding: 10px 15px;
+      width: 200px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+    }
+
+    .search-box button {
+      background-color: #0d47a1;
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .search-box button:hover {
+      background-color: #1565c0;
+    }
+
+    /* Popular Destinations */
+    .section {
+      width: 85%;
+      margin: 0 auto 60px;
+      text-align: center;
+    }
+
+    .section h2 {
+      color: #0d47a1;
+      font-size: 28px;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      width: 250px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      margin: 15px 0 5px;
+      color: #0d47a1;
+    }
+
+    .card p {
+      padding: 0 15px 15px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .book-btn {
+      background-color: #ff9800;
+      color: white;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 15px;
+      transition: 0.3s;
+    }
+
+    .book-btn:hover {
+      background-color: #e68900;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #0d47a1;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .search-box {
+        flex-direction: column;
+      }
+
+      .cards {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .hero-content h1 {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">IndiaTravel.com</div>
+    <nav>
+      <a href="homeextra.html">Home</a>
+      <a href="destinations html.html">Destinations</a>
+      <a href="packages html.html">Packages</a>
+      <a href="contact html.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Explore Incredible India</h1>
+      <p>Find your next adventure across the land of diversity and culture.</p>
+      <button>Discover Now</button>
+    </div>
+  </section><br>
+<br>
+<br><br>  <div class="search-box">
+    <select>
+      <option>From</option>
+      <option>Delhi</option>
+      <option>Mumbai</option>
+      <option>Bangalore</option>
+    </select>
+    <select>
+      <option>To</option>
+      <option>Goa</option>
+      <option>Kerala</option>
+      <option>Rajasthan</option>
+    </select>
+    <input type="date">
+    <button>Search</button>
+  </div>
+
+  <section class="section">
+    <h2>Popular Destinations</h2>
+    <div class="cards">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Goa">
+        <h3>Goa</h3>
+        <p>Golden beaches, nightlife, and relaxation await you.</p>
+        <button class="book-btn">Book Now</button>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80" alt="Jaipur">
+        <h3>Jaipur</h3>
+        <p>The royal city with magnificent palaces and heritage.</p>
+        <button class="book-btn">Book Now</button>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80" alt="Kerala">
+        <h3>Kerala</h3>
+        <p>Experience backwaters, hills, and nature’s charm.</p>
+        <button class="book-btn">Book Now</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 IndiaTravel.com | Designed for travelers who love India 🌏
+  </footer>
+
+</body>
+</html>
+

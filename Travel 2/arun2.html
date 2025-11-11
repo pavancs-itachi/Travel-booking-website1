@@ -1,0 +1,235 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flivan Admin Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .sidebar {
+      height: 100vh;
+      background: #0d6efd;
+      color: white;
+      position: fixed;
+      width: 250px;
+      padding-top: 1rem;
+    }
+
+    .sidebar a {
+      color: white;
+      display: block;
+      padding: 10px 20px;
+      margin: 5px 0;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover,
+    .sidebar a.active {
+      background: #084298;
+    }
+
+    .content {
+      margin-left: 250px;
+      padding: 2rem;
+    }
+
+    .card {
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h3 class="text-center mb-4">✈ Flivan Admin</h3>
+    <a href="#" class="active"><i class="ri-dashboard-line"></i> Dashboard</a>
+    <a href="#bookings"><i class="ri-calendar-check-line"></i> Bookings</a>
+    <a href="#offers"><i class="ri-gift-line"></i> Manage Offers</a>
+    <a href="#destinations"><i class="ri-map-pin-line"></i> Destinations</a>
+    <a href="#subscribers"><i class="ri-mail-line"></i> Subscribers</a>
+    <a href="#logout" onclick="logout()"><i class="ri-logout-box-line"></i> Logout</a>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+    <h2 class="fw-bold mb-4">Welcome, Admin</h2>
+
+    <!-- Dashboard Cards -->
+    <div class="row g-4 mb-4">
+      <div class="col-md-3">
+        <div class="card shadow-sm text-center p-3">
+          <i class="ri-group-line display-5 text-primary"></i>
+          <h5 class="mt-2">Total Travellers</h5>
+          <p class="fs-4 fw-bold" id="travellerCount">256</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card shadow-sm text-center p-3">
+          <i class="ri-flight-takeoff-line display-5 text-success"></i>
+          <h5 class="mt-2">Flights Booked</h5>
+          <p class="fs-4 fw-bold" id="flightCount">74</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card shadow-sm text-center p-3">
+          <i class="ri-gift-line display-5 text-warning"></i>
+          <h5 class="mt-2">Active Offers</h5>
+          <p class="fs-4 fw-bold" id="offerCount">12</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card shadow-sm text-center p-3">
+          <i class="ri-mail-open-line display-5 text-danger"></i>
+          <h5 class="mt-2">Subscribers</h5>
+          <p class="fs-4 fw-bold" id="subscriberCount">320</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bookings Table -->
+    <section id="bookings" class="mb-5">
+      <h4 class="fw-bold mb-3"><i class="ri-calendar-check-line"></i> Recent Bookings</h4>
+      <div class="table-responsive shadow-sm">
+        <table class="table table-striped table-hover">
+          <thead class="table-primary">
+            <tr>
+              <th>#</th>
+              <th>Traveller</th>
+              <th>Destination</th>
+              <th>Class</th>
+              <th>Date</th>
+              <th>Seats</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="bookingTable">
+            <tr>
+              <td>1</td>
+              <td>Emily Johnson</td>
+              <td>Dubai</td>
+              <td>Business</td>
+              <td>2025-11-10</td>
+              <td>2</td>
+              <td><span class="badge bg-success">Confirmed</span></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>David Smith</td>
+              <td>Paris</td>
+              <td>Economy</td>
+              <td>2025-11-15</td>
+              <td>1</td>
+              <td><span class="badge bg-warning text-dark">Pending</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Offers Management -->
+    <section id="offers" class="mb-5">
+      <h4 class="fw-bold mb-3"><i class="ri-gift-line"></i> Manage Offers</h4>
+      <div class="card shadow-sm p-4">
+        <form id="offerForm">
+          <div class="row g-3">
+            <div class="col-md-5">
+              <input type="text" id="offerTitle" class="form-control" placeholder="Offer Title" required>
+            </div>
+            <div class="col-md-5">
+              <input type="text" id="offerDesc" class="form-control" placeholder="Offer Description" required>
+            </div>
+            <div class="col-md-2">
+              <button class="btn btn-primary w-100" type="submit">Add Offer</button>
+            </div>
+          </div>
+        </form>
+        <ul class="list-group list-group-flush mt-3" id="offerList">
+          <li class="list-group-item">🎉 20% off on First Class tickets</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Destinations -->
+    <section id="destinations" class="mb-5">
+      <h4 class="fw-bold mb-3"><i class="ri-map-pin-line"></i> Manage Destinations</h4>
+      <div class="card shadow-sm p-4">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <input type="text" id="destinationName" class="form-control" placeholder="Destination Name">
+          </div>
+          <div class="col-md-4">
+            <input type="text" id="countryName" class="form-control" placeholder="Country">
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-success w-100" id="addDestination">Add</button>
+          </div>
+        </div>
+        <ul class="list-group mt-3" id="destinationList">
+          <li class="list-group-item">Paris, France</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Subscribers -->
+    <section id="subscribers" class="mb-5">
+      <h4 class="fw-bold mb-3"><i class="ri-mail-line"></i> Newsletter Subscribers</h4>
+      <div class="card shadow-sm p-3">
+        <ul class="list-group" id="subscriberList">
+          <li class="list-group-item">john.doe@gmail.com</li>
+          <li class="list-group-item">emma@travel.com</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Add Offer
+    document.getElementById("offerForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const title = document.getElementById("offerTitle").value;
+      const desc = document.getElementById("offerDesc").value;
+      const list = document.getElementById("offerList");
+      const li = document.createElement("li");
+      li.className = "list-group-item";
+      li.textContent = `${dest}, ${country}`;
+      list.appendChild(li);
+      this.reset();
+    });
+
+    // Add Destination
+    document.getElementById("addDestination").addEventListener("click", () => {
+      const dest = document.getElementById("destinationName").value;
+      const country = document.getElementById("countryName").value;
+      if (dest && country) {
+        const li = document.createElement("li");
+        li.className = "list-group-item";
+        li.textContent = `${dest}, ${country}`;
+        document.getElementById("destinationList").appendChild(li);
+        document.getElementById("destinationName").value = "";
+        document.getElementById("countryName").value = "";
+      } else {
+        alert("Please fill all fields");
+      }
+    });
+
+    // Logout
+    function logout() {
+      alert("Logging out...");
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flivan | Login & Sign Up</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet" />
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --primary-dark: #0056b3;
+            --bg-light: #f8f9fa;
+            --white: #fff;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            background: var(--bg-light);
+            font-family: "Poppins", sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            padding: 15px;
+        }
+
+        .container {
+            background: var(--white);
+            width: 100%;
+            max-width: 430px;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+
+        .tab-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            background: #e9ecef;
+            color: #333;
+            transition: 0.3s;
+        }
+
+        .tab-btn.active {
+            background: var(--primary-color);
+            color: #fff;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .btn {
+            width: 100%;
+            background: var(--primary-color);
+            border: none;
+            color: white;
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .role-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .role-btn {
+            flex: 1;
+            background: #e9ecef;
+            border: none;
+            margin: 5px;
+            padding: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .role-btn:hover {
+            background: var(--primary-color);
+            color: #fff;
+        }
+
+        .footer-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>✈ Freedom Travels</h2>
+
+        <!-- Tabs -->
+        <div class="tab-buttons">
+            <button id="loginTab" class="tab-btn active">Login</button>
+            <button id="signupTab" class="tab-btn">Sign Up</button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm">
+            <input type="text" id="loginUsername" placeholder="Enter Username" required />
+            <input type="password" id="loginPassword" placeholder="Enter Password" required />
+
+            <div class="role-buttons">
+                <button type="button" id="adminLogin" class="role-btn">Admin Login</button>
+                <button type="button" id="clientLogin" class="role-btn">Login</button>
+            </div>
+        </form>
+
+        <!-- Sign Up Form -->
+        <form id="signupForm" class="hidden">
+            <input type="text" id="signupUsername" placeholder="Choose Username" required />
+            <input type="email" id="signupEmail" placeholder="Enter Email" required />
+            <input type="password" id="signupPassword" placeholder="Create Password" required />
+            <input type="password" id="signupConfirm" placeholder="Confirm Password" required />
+            <button type="submit" class="btn">Create Account</button>
+        </form>
+
+        <a href="travel.html" class="footer-link">&larr; Back to Freedom Home</a>
+    </div>
+
+   <script>
+    // Tabs toggle
+    const loginTab = document.getElementById("loginTab");
+    const signupTab = document.getElementById("signupTab");
+    const loginForm = document.getElementById("loginForm");
+    const signupForm = document.getElementById("signupForm");
+
+    loginTab.addEventListener("click", () => {
+        loginTab.classList.add("active");
+        signupTab.classList.remove("active");
+        loginForm.classList.remove("hidden");
+        signupForm.classList.add("hidden");
+    });
+
+    signupTab.addEventListener("click", () => {
+        signupTab.classList.add("active");
+        loginTab.classList.remove("active");
+        signupForm.classList.remove("hidden");
+        loginForm.classList.add("hidden");
+    });
+
+    // ✅ Admin Login
+    document.getElementById("adminLogin").addEventListener("click", () => {
+        const username = document.getElementById("loginUsername").value.trim();
+        const password = document.getElementById("loginPassword").value.trim();
+
+        if (username === "pavancs" && password === "pavancs@3000") {
+            alert("✅ Welcome Admin PAVAN! Redirecting to Dashboard...");
+            // Redirect to admin page
+            window.location.href = "admin dashboard.html";
+        } else {
+            alert("❌ Invalid Admin credentials!");
+        }
+    });
+
+    // ✅ Client Login
+    document.getElementById("clientLogin").addEventListener("click", () => {
+        const username = document.getElementById("loginUsername").value.trim();
+        const password = document.getElementById("loginPassword").value.trim();
+
+        if (username === "" || password === "") {
+            alert("⚠ Please enter username and password!");
+            return;
+        }
+
+        alert("✅ Welcome to Freedom Travels! Redirecting to Home Page...");
+        // Redirect to home page
+        window.location.href = "travel.html";
+    });
+
+    // ✅ Sign Up Logic (after signup → redirect)
+    signupForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const username = document.getElementById("signupUsername").value.trim();
+        const email = document.getElementById("signupEmail").value.trim();
+        const password = document.getElementById("signupPassword").value.trim();
+        const confirm = document.getElementById("signupConfirm").value.trim();
+
+        if (password !== confirm) {
+            alert("⚠ Passwords do not match!");
+            return;
+        }
+
+        alert(`🎉 Account created for ${username}! Redirecting to welcome page...`);
+        // Redirect to welcome or profile setup page
+        window.location.href = "travel.html";
+    });
+</script>
+
+</body>
+
+</html>

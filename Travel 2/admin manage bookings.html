@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Manage Bookings | Freedom Travel</title>
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+        /* Admin Layout Styles (Reusing the common styles) */
+        #wrapper {
+            display: flex;
+            min-height: 100vh;
+        }
+        #sidebar-wrapper {
+            min-width: 250px;
+            max-width: 250px;
+            background-color: #343a40;
+            color: #fff;
+            padding-top: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .sidebar-heading {
+            padding: 0.875rem 1.25rem;
+            font-size: 1.2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: bold;
+        }
+        .list-group-item {
+            background-color: transparent;
+            color: rgba(255, 255, 255, 0.8);
+            border: none;
+            padding: 10px 1.25rem;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .list-group-item i {
+            margin-right: 10px;
+        }
+        .list-group-item:hover, .list-group-item.active {
+            background-color: #0d6efd;
+            color: white;
+            border-radius: 0;
+        }
+        #page-content-wrapper {
+            width: 100%;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <div class="sidebar-heading bg-primary text-white">Admin Panel</div>
+            <div class="list-group list-group-flush">
+                <a href="admin dashboard.html" class="list-group-item">
+                    <i class="fas fa-tachometer-alt"></i>Dashboard
+                </a>
+                <a href="admin manage destinations.html" class="list-group-item">
+                    <i class="fas fa-globe-europe"></i>Manage Destinations
+                </a>
+                <a href="admin manage bookings.html" class="list-group-item active">
+                    <i class="fas fa-book-open"></i>Manage Bookings
+                </a>
+                <a href="11.html" class="list-group-item">
+                    <i class="fas fa-users"></i>Manage Users
+                </a>
+                <a href="#" class="list-group-item">
+                    <i class="fas fa-chart-line"></i>Reports
+                </a>
+                <a href="arun login.html" class="list-group-item mt-5 text-danger">
+                    <i class="fas fa-sign-out-alt"></i>Logout
+                </a>
+            </div>
+        </div>
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <h1 class="mt-4 mb-4">Manage Customer Bookings</h1>
+                
+                <div class="card shadow">
+                    <div class="card-header bg-white fw-bold">All Bookings</div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Customer Name</th>
+                                        <th>Destination</th>
+                                        <th>Travel Date</th>
+                                        <th>Total Price</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>#1001</td>
+                                        <td>John Doe</td>
+                                        <td>Maldives (7-Day Package)</td>
+                                        <td>2025-11-20</td>
+                                        <td>$3,000</td>
+                                        <td><span class="badge bg-success">Confirmed</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info text-white me-2">Details</button>
+                                            <button class="btn btn-sm btn-primary">Update Status</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#1002</td>
+                                        <td>Jane Smith</td>
+                                        <td>Paris (3-Day Romantic Getaway)</td>
+                                        <td>2025-12-05</td>
+                                        <td>$1,200</td>
+                                        <td><span class="badge bg-warning text-dark">Pending</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info text-white me-2">Details</button>
+                                            <button class="btn btn-sm btn-primary">Update Status</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#1003</td>
+                                        <td>Bob Johnson</td>
+                                        <td>Tokyo (10-Day Culture Trip)</td>
+                                        <td>2026-01-15</td>
+                                        <td>$4,500</td>
+                                        <td><span class="badge bg-danger">Cancelled</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info text-white me-2">Details</button>
+                                            <button class="btn btn-sm btn-primary">Update Status</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+</html>
